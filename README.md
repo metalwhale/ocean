@@ -1,5 +1,5 @@
 # wave
-K8s cluster for Whale
+Cloud rests in the sky, while wave rises in the ocean.
 
 ## Initial setup
 Create a virtual environment:
