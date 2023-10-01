@@ -5,4 +5,4 @@
 - name: Custom | Custom defaults | Install requirements
   pip:
     name:
-      - kubernetes==26.1.0 # Prerequisite for k8s module
+      - kubernetes==28.1.0 # Prerequisite for k8s module

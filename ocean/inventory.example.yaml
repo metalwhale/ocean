@@ -3,13 +3,15 @@ all:
     bastion:
       ansible_connection: local
     node1:
-      ansible_host: 10.0.50.21
+      ansible_host: IP_ADDRESS
     node2:
-      ansible_host: 10.0.50.22
+      ansible_host: IP_ADDRESS
     node3:
-      ansible_host: 10.0.50.23
+      ansible_host: IP_ADDRESS
     node4:
-      ansible_host: 10.0.50.113
+      ansible_host: IP_ADDRESS
+    node5:
+      ansible_host: IP_ADDRESS
   children:
     kube_node:
       hosts:
@@ -17,3 +19,4 @@ all:
         node2:
         node3:
         node4:
+        node5:

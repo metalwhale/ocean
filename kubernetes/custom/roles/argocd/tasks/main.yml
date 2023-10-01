@@ -33,4 +33,4 @@
     kind: Pod
     namespace: "{{ argocd_namespace }}"
     label_selectors:
-      - app.kubernetes.io/name=argocd-server # See: https://raw.githubusercontent.com/argoproj/argo-cd/v2.6.7/manifests/install.yaml
+      - app.kubernetes.io/name=argocd-server # See: https://raw.githubusercontent.com/argoproj/argo-cd/v2.8.0/manifests/install.yaml
