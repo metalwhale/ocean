@@ -1,23 +1,23 @@
-# wave
-Cloud rests in the sky, while wave rises in the ocean.
+# ocean
+Ocean is the place where whales live, eat, sleep, and think.
 
 ## Prerequisites
 - Access the bastion
 - Add public key of bastion to each node
 
 ## Initial setup
-Clone this repository:
-```bash
-git clone --recurse-submodules https://github.com/metalwhale/wave
-cd ./wave/
-```
-
 Create a virtual environment:
 ```bash
 sudo apt-get install -y python3-pip
 pip3 install -U virtualenv
 python3 -m virtualenv --python=$(which python3) ansible
 source ansible/bin/activate
+```
+
+Clone this repository:
+```bash
+git clone --recurse-submodules https://github.com/metalwhale/ocean
+cd ./ocean/
 ```
 
 Install requirements for `kubespray` ([reference](https://github.com/kubernetes-sigs/kubespray/blob/master/docs/ansible.md#installing-ansible)):

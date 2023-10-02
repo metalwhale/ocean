@@ -1,4 +1,4 @@
-# Copied from `wave/kubernetes/kubespray/roles/kubernetes-apps/meta/main.yml` file
+# See: https://github.com/kubernetes-sigs/kubespray/blob/v2.23.0/roles/kubernetes-apps/meta/main.yml
 ---
 dependencies:
   - role: kubernetes-apps/ansible

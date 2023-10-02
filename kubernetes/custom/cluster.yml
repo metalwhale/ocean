@@ -1,4 +1,4 @@
-# Copied from `wave/kubernetes/kubespray/playbooks/cluster.yml` file
+# See: https://github.com/kubernetes-sigs/kubespray/blob/v2.23.0/playbooks/cluster.yml
 ---
 - hosts: kube_control_plane
   gather_facts: False

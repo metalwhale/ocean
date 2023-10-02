@@ -1,4 +1,4 @@
-# See: wave/kubernetes/kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
+# See: https://github.com/kubernetes-sigs/kubespray/blob/v2.23.0/roles/kubernetes-apps/argocd/tasks/main.yml
 ---
 - name: Custom | ArgoCD | Create directory to store manifests
   file:
@@ -25,7 +25,7 @@
     name: argocd-cmd-params-cm
     definition:
       data:
-        server.insecure: "true" # See: https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#option-2-multiple-ingress-objects-and-hosts
+        server.insecure: "true" # See: https://argo-cd.readthedocs.io/en/release-2.8/operator-manual/ingress/#option-2-ssl-termination-at-ingress-controller
         server.rootpath: "/argocd"
 - name: Custom | ArgoCD | Force recreating argocd-server pods to use latest configmap
   k8s:
