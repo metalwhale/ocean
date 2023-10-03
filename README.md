@@ -48,11 +48,13 @@ cd ../
 ```
 
 ### Deploy kubernetes cluster
-Create inventory file and replace the placeholders `IP_ADDRESS` with correct values:
+Create inventory file and replace the placeholders with correct values:
 ```bash
 cp ./kubernetes/inventory/hosts.example.yaml ./kubernetes/inventory/hosts.yaml
 vi ./kubernetes/inventory/hosts.yaml
 ```
+- `IP_ADDRESS`s: IP addresses of each nodes
+- `PUBLIC_IP_RANGE`: public IP range used for assigning to Load Balancer services.
 
 Deploy cluster:
 ```bash

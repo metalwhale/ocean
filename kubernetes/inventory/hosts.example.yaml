@@ -43,3 +43,5 @@ all:
         kube_node:
     calico_rr:
       hosts: {}
+  vars:
+    ocean_public_ip_range: PUBLIC_IP_RANGE
