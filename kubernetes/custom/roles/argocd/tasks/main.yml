@@ -17,7 +17,7 @@
     kubectl: "{{ bin_dir }}/kubectl"
     filename: "{{ custom_kube_config_dir }}/argocd/application.yaml"
     state: latest
-- name: Custom | ArgoCD | Update configmap
+- name: Custom | ArgoCD | Update params configmap
   k8s:
     state: patched
     kind: ConfigMap
@@ -27,10 +27,20 @@
       data:
         server.insecure: "true" # See: https://argo-cd.readthedocs.io/en/release-2.8/operator-manual/ingress/#option-2-ssl-termination-at-ingress-controller
         server.rootpath: "/argocd"
-- name: Custom | ArgoCD | Force recreating argocd-server pods to use latest configmap
+- name: Custom | ArgoCD | Update configmap
+  k8s:
+    state: patched
+    kind: ConfigMap
+    namespace: "{{ argocd_namespace }}"
+    name: argocd-cm
+    definition:
+      data:
+        kustomize.buildOptions: --enable-helm # See: https://argo-cd.readthedocs.io/en/release-2.8/user-guide/kustomize/#kustomizing-helm-charts
+- name: Custom | ArgoCD | Force recreating pods to use the latest config
   k8s:
     state: absent
     kind: Pod
     namespace: "{{ argocd_namespace }}"
     label_selectors:
-      - app.kubernetes.io/name=argocd-server # See: https://raw.githubusercontent.com/argoproj/argo-cd/v2.8.0/manifests/install.yaml
+      # See: https://raw.githubusercontent.com/argoproj/argo-cd/v2.8.0/manifests/install.yaml
+      - app.kubernetes.io/name in (argocd-application-controller, argocd-repo-server, argocd-server)
