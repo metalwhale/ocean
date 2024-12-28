@@ -39,3 +39,19 @@ Install roles:
 ```bash
 ansible-galaxy install -r requirements.yml
 ```
+
+## Running playbooks
+### Forming Ocean
+Create an inventory file and replace the placeholders with correct values:
+```bash
+cd ./ocean/
+cp ./inventory.yaml.example ./inventory.yaml
+vi ./inventory.yaml
+```
+- `IP_ADDRESS`s: IP addresses of each node
+
+Run basic setup:
+```bash
+ansible-playbook -i inventory.yaml --ask-become-pass base.yml
+cd ../
+```

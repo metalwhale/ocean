@@ -1,0 +1,12 @@
+- name: Set timezone to Asia/Tokyo
+  timezone:
+    name: Asia/Tokyo
+- name: Configure Oh My Zsh
+  include_role:
+    name: ctorgalson.oh-my-zsh
+  vars:
+    omz_install_zsh: true
+    omz_user:
+      name: "{{ username }}"
+      group: "{{ username }}"
+      settings: ""
