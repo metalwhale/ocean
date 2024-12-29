@@ -1,0 +1,35 @@
+all:
+  hosts:
+    wave-node1:
+      ansible_host: IP_ADDRESS
+      ip: IP_ADDRESS
+      access_ip: IP_ADDRESS
+    wave-node2:
+      ansible_host: IP_ADDRESS
+      ip: IP_ADDRESS
+      access_ip: IP_ADDRESS
+    wave-node3:
+      ansible_host: IP_ADDRESS
+      ip: IP_ADDRESS
+      access_ip: IP_ADDRESS
+  children:
+    kube_control_plane:
+      hosts:
+        wave-node1:
+        wave-node2:
+    kube_node:
+      hosts:
+        wave-node1:
+        wave-node2:
+        wave-node3:
+    etcd:
+      hosts:
+        wave-node1:
+        wave-node2:
+        wave-node3:
+    k8s_cluster:
+      children:
+        kube_control_plane:
+        kube_node:
+    calico_rr:
+      hosts: {}
