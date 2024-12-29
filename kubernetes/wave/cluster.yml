@@ -1,0 +1,22 @@
+---
+# Doc: https://github.com/kubernetes-sigs/kubespray/blob/v2.26.0/roles/helm-apps/README.md
+- hosts: kube_control_plane[0]
+  gather_facts: true
+  roles:
+    - role: kubespray-defaults
+    - role: helm-apps
+      releases:
+        - name: argo-cd
+          namespace: argocd
+          chart_ref: argo/argo-cd
+          chart_version: 7.7.11 # Doc: https://github.com/argoproj/argo-helm/blob/argo-cd-7.7.11/charts/argo-cd/Chart.yaml
+          values:
+            configs:
+              cm:
+                kustomize.buildOptions: --enable-helm # Doc: https://argo-cd.readthedocs.io/en/release-2.13/user-guide/kustomize/#kustomizing-helm-charts
+      repositories:
+        - name: argo
+          url: https://argoproj.github.io/argo-helm
+      release_common_opts:
+        create_namespace: true
+    - role: roles/helm
