@@ -72,3 +72,18 @@ ansible-playbook -i ../inventory --become --become-user=root --ask-become-pass c
 ansible-playbook -i ../inventory --become --become-user=root --ask-become-pass ../wave/cluster.yml
 cd ../../
 ```
+
+### Setup a reverse proxy (optional)
+If the cluster is deployed inside an internal network, you may need an Nginx server acting as a reverse proxy between the cluster and outside world, with the following SSL passthrough configuration:
+```
+stream {
+    server {
+        listen 80;
+        proxy_pass 10.0.50.120:80;
+    }
+    server {
+        listen 443;
+        proxy_pass 10.0.50.120:443;
+    }
+}
+```
