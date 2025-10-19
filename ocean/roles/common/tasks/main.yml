@@ -1,0 +1,15 @@
+- name: Set timezone to Asia/Tokyo
+  timezone:
+    name: Asia/Tokyo
+- name: Configure Oh My Zsh
+  include_role:
+    name: ctorgalson.oh-my-zsh
+  vars:
+    omz_install_zsh: true
+    omz_user:
+      name: "{{ username }}"
+      group: "{{ username }}"
+      # See: https://github.com/ohmyzsh/ohmyzsh/blob/e11d813/themes/robbyrussell.zsh-theme
+      settings: |
+        PROMPT="%F{green}%n%f %F{yellow}%m%f %F{cyan}%~%f"
+        PROMPT+=' $(git_prompt_info)'

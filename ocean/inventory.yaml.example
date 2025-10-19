@@ -1,0 +1,12 @@
+all:
+  hosts:
+    bastion:
+      ansible_connection: local
+    wave-node1:
+      ansible_host: ${NODE1_IP_ADDRESS}
+    wave-node2:
+      ansible_host: ${NODE2_IP_ADDRESS}
+    wave-node3:
+      ansible_host: ${NODE3_IP_ADDRESS}
+  vars:
+    username: whale
