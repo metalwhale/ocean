@@ -1,0 +1,10 @@
+---
+# See: https://github.com/cilium/cilium/issues/23838#issuecomment-2191213296
+kube_owner: root
+
+kube_network_plugin: cilium
+
+# If we enable NodeLocal DNSCache, it will be deployed with `hostNetwork: true`.
+# This means it is not a Cilium-managed endpoint and therefore cannot be matched by `toEndpoints`.
+# Ref: https://github.com/kubernetes-sigs/kubespray/blob/v2.29.0/roles/kubernetes-apps/ansible/templates/nodelocaldns-daemonset.yml.j2#L26
+enable_nodelocaldns: false

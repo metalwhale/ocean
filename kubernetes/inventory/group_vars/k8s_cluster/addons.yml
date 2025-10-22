@@ -1,0 +1,3 @@
+---
+# Helm deployment
+helm_enabled: true

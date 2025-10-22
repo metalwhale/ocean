@@ -1,0 +1,17 @@
+# Doc: https://github.com/kubernetes-sigs/kubespray/blob/v2.29.0/docs/ansible/inventory.md
+wave-node1 ansible_host=${NODE1_IP_ADDRESS} ip=${NODE1_IP_ADDRESS} etcd_member_name=wave-etcd1
+wave-node2 ansible_host=${NODE2_IP_ADDRESS} ip=${NODE2_IP_ADDRESS} etcd_member_name=wave-etcd2
+wave-node3 ansible_host=${NODE3_IP_ADDRESS} ip=${NODE3_IP_ADDRESS} etcd_member_name=wave-etcd3
+
+[kube_control_plane]
+wave-node1
+wave-node2
+wave-node3
+
+[etcd:children]
+kube_control_plane
+
+[kube_node]
+wave-node1
+wave-node2
+wave-node3

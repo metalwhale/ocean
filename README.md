@@ -51,3 +51,19 @@ Run basic setup:
 ansible-playbook -i inventory.yaml --ask-become-pass base.yml
 cd ../
 ```
+
+### Deploy Kubernetes cluster
+Create an inventory file and replace the placeholders with correct values:
+- <code>${NODE<b>x</b>_IP_ADDRESS}</code>s: IP addresses of each node
+```bash
+cd ./kubernetes/
+cp ./inventory/inventory.ini.example ./inventory/inventory.ini
+vi ./inventory/inventory.ini
+```
+
+Deploy Wave cluster:
+```bash
+cd ./kubespray/
+ansible-playbook -i ../inventory/inventory.ini --become --become-user=root --ask-become-pass cluster.yml
+cd ../../
+```

@@ -1,0 +1,6 @@
+---
+# Enable l2 announcement from cilium to replace Metallb Ref: https://docs.cilium.io/en/v1.14/network/l2-announcements/
+cilium_l2announcements: true
+
+# Kube Proxy Replacement mode (strict/partial)
+cilium_kube_proxy_replacement: true
