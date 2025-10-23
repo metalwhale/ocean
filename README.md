@@ -65,5 +65,6 @@ Deploy Wave cluster:
 ```bash
 cd ./kubespray/
 ansible-playbook -i ../inventory/inventory.ini --become --become-user=root --ask-become-pass cluster.yml
+ansible-playbook -i ../inventory/inventory.ini --become --become-user=root --ask-become-pass ../wave/cluster.yml
 cd ../../
 ```

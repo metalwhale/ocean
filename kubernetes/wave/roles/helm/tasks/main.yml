@@ -1,0 +1,24 @@
+- name: Wave | Helm | Create a directory to store charts
+  file:
+    path: "{{ wave_charts_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+- name: Wave | Helm | Copy charts
+  copy:
+    src: files/charts/
+    dest: "{{ wave_charts_dir }}"
+- name: Wave | Helm | Install entrance chart
+  kubernetes.core.helm:
+    name: entrance
+    namespace: argocd
+    chart_ref: "{{ wave_charts_dir }}/entrance"
+    chart_version: 0.1.0
+    values:
+      environment: playground
+    force: true
+- name: Wave | Helm | Delete charts
+  file:
+    path: "{{ wave_charts_dir }}"
+    state: absent
